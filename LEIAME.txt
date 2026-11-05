@@ -1,23 +1,24 @@
-JOGO DE RPG - Python + banco de dados SQLite
-===========================================
+LISTA DE EXERCÍCIOS - Python no mundo do RPG
+=============================================
 
-Arquivos
-  main.py         programa principal: menu e conexão com o banco (pronto)
-  banco.py        cria o arquivo rpg.db e as 5 tabelas (pronto)
-  classes.py      funções da tabela classes    (pronto - É O MODELO)
-  jogadores.py    complete as funções   (Parte 3)
-  itens.py        complete as funções   (Parte 3)
-  personagens.py  complete as funções   (Parte 4)
-  inventario.py   complete as funções   (Parte 5 - desafio)
+Os três exercícios formam UM jogo, construído aos poucos:
 
-Como rodar
-  1. Deixe todos os arquivos .py na MESMA pasta.
-  2. Abra o main.py no Thonny (ou no VS Code) e clique em Run (F5).
-     No terminal:  python main.py
-  3. No menu, escolha 6 para carregar os dados de exemplo.
+  ex1/  Batalha por turnos       laços, decisão, funções, parâmetros
+  ex2/  Loja do herói            + módulos e arquivos JSON
+  ex3/  Arena com ranking        + banco de dados (SQLite)
 
-O banco fica guardado no arquivo rpg.db, criado na mesma pasta.
-Para começar do zero, feche o programa e apague o rpg.db.
+Em cada pasta:
+  - complete as funções marcadas com TODO (apague o "raise NotImplementedError");
+  - rode o arquivo testes_exN.py para conferir: cada teste mostra OK ou ERRO;
+  - depois rode o programa principal e jogue.
 
-Para ver as tabelas fora do programa (opcional):
-  DB Browser for SQLite - sqlitebrowser.org
+Programas principais
+  ex1:  batalha.py      ex2:  main.py      ex3:  arena.py
+
+ANTES DO EXERCÍCIO 3, copie para a pasta ex3:
+  - o seu batalha.py  (da pasta ex1)
+  - o seu arquivos.py (da pasta ex2)
+  - o seu heroi.json  (criado na pasta ex2 quando você sai da loja com a opção 0)
+
+Todos os arquivos de um exercício precisam ficar na MESMA pasta.
+Editor recomendado: Thonny (thonny.org). Não é preciso instalar mais nada.
