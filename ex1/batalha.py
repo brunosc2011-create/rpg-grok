@@ -52,7 +52,7 @@ def barra_de_vida(vida, vida_max, tamanho=10):
     Quantidade de '#':  vida * tamanho // vida_max   (o resto é '-')
     Use um laço for com range(tamanho)."""
     barra_vida = ""
-    if i in range (tamanho):
+    for i in range (tamanho):
         if i < vida *tamanho // vida_max:
             barra_vida += "#"
         else:
@@ -89,7 +89,7 @@ def ler_acao():
     # TODO: use while True e return
     
     while True:
-        perguntar = input("Digite qual opção deseja - (1)-Atacar, (2)-Tomar poções, (3)-Fugir")
+        perguntar = input("Digite qual opção deseja - (1)-Atacar, (2)-Tomar poções, (3)-Fugir: ")
         if(perguntar == "1"):
             aplicar_dano()
             return "1"
@@ -123,19 +123,36 @@ def batalha(heroi, inimigo, pocoes=3):
             #       3) atualize a vida do inimigo com aplicar_dano
             #       4) mostre quanto de dano foi causado (avise se foi crítico)
             critico = random.randint(1, 10) == 10
-            calcular_dano(ataque, defesa, critico)
+            dano = calcular_dano(ataque=10, defesa=5, critico=critico)
+            aplicar_dano()
+            if(critico == True):
+                print(f"Foi causado {dano} de dano critico")
+                return
+            else:
+                print(f"O dano causado foi {dano}")
 
         elif acao == "2":
             # TODO: se ainda houver poções: diminua 1, cure o herói com curar() e avise
             #       quantas restam. Se não houver: mostre "Você não tem mais poções!"
-            pass
+            if(pocoes <= 3 and pocoes >= 1):
+                pocoes -= 1
+                curar()
+                print(f"Restam {pocoes} poções")
+            elif(pocoes == 0):
+                print(f"Você não tem mais poções")
+
         else:
             # TODO: mostre que o herói fugiu e devolva (return) o dicionário com
             #       "resultado": "fuga" (veja o formato no início desta função)
-            pass
+            print("O herói fugiu!")
+            return  {"resultado":  "fuga", "turnos": turno,
+                    "vida_restante":barra_de_vida,  "pocoes":pocoes}
 
         # TODO: se o inimigo ainda estiver vivo, ele ataca o herói
         #       (dano = calcular_dano(ataque do inimigo, defesa do herói), sem crítico)
+        if (inimigo['vida'] >= 1 ):
+            dano = calcular_dano(ataque= 10, defesa= 5)
+            return dano
 
     if heroi["vida"] > 0:
         resultado = "vitoria"
